@@ -14,6 +14,12 @@ width: 43.9rem;
 border: 0.1rem solid #686868;
 border-radius: 0.8rem;
 
+@media (max-width: 680px) {
+    border: none;
+    width: 100%;
+    padding: 0;
+}
+
 `
 
 export const InformationCard = styled.div`
@@ -54,7 +60,7 @@ display: flex;
 align-items: center;
 justify-content: space-between;
 
-border-bottom: 1px solid #E8A634;
+border-bottom: 0.1rem solid #E8A634;
 `
 
 export const IngredientInfos = styled.div`
@@ -176,20 +182,22 @@ img{
 }
 `
 export const OrderButton = styled.button`
-width: 219px;
-height: 40px;
+width: 21.9rem;
+height: 4rem;
 
 background: #F09035;
-border-radius: 4px;
+border-radius: 0.4rem;
 
 border: none;
-border-radius: 8px;
+border-radius: 0.8rem;
 
 font-weight: 500;
-font-size: 14px;
-line-height: 10px;
+font-size: 1.4rem;
+line-height: 1rem;
 
 color: #FFFFFF;
+
+@media (max-width: 680px) {
+    width: 19.5rem;
+}
 `
-
-
