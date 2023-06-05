@@ -9,7 +9,6 @@ padding: 3.2rem;
 gap: 0.8rem;
 
 width: 43.9rem;
-/* height: 66.2rem; */
 
 border: 0.1rem solid #686868;
 border-radius: 0.8rem;

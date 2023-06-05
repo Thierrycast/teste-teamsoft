@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import {
   ContainerIngredientsSection,
   InformationCard,
@@ -12,28 +12,33 @@ import {
 } from './styles';
 
 import { IResponseData } from '@/types/ResponseApi';
-
 import { handleDecrease, handleIncrease } from '@/helpers/controllerQuantityItem';
-
 
 interface Props {
   data: IResponseData;
+  setIngredientsQuantity: React.Dispatch<React.SetStateAction<Ingredient[]>>;
+  ingredientsQuantity: Ingredient[];
+  setOpenPopover: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-interface Ingredient {
+type Ingredient = {
   id: number;
+  nm_item: string;
   amount: number;
-}
+};
 
-const IngredientsSection = ({ data }: Props) => {
-  const [ingredientsQuantity, setIngredientsQuantity] = useState<Ingredient[]>([
-    { id: 1, amount: 0 },
-    { id: 2, amount: 0 },
-    { id: 3, amount: 0 },
-    { id: 4, amount: 0 }
-  ]);
+const IngredientsSection: React.FC<Props> = ({ data, setIngredientsQuantity,ingredientsQuantity,setOpenPopover }) => {
 
- 
+  const [orderQuantity, setOrderQuantity] = useState(0)
+
+  const handleAddproduct = ()=>{
+    setOpenPopover(true)
+
+    setTimeout(() => {
+      setOpenPopover(false);
+    }, 5000);
+  }
+
   return (
     <ContainerIngredientsSection>
       <InformationCard>
@@ -41,7 +46,7 @@ const IngredientsSection = ({ data }: Props) => {
         <p>Até 8 ingredientes.</p>
       </InformationCard>
       <div>
-        {data[0].ingredients[0].itens.map(ingredient => (
+        {data[0].ingredients[0].itens.map((ingredient) => (
           <IngredientItem
             key={ingredient.id}
             style={ingredient.id === 4 ? { border: 'none' } : {}}
@@ -51,13 +56,21 @@ const IngredientsSection = ({ data }: Props) => {
               <p>+ R${ingredient.vl_item.toFixed(2)}</p>
             </IngredientInfos>
             <IngredientAmount>
-              {ingredientsQuantity.find(item => item.id === ingredient.id)?.amount === 0 ? (
+              {ingredientsQuantity.find((item) => item.id === ingredient.id)?.amount === 0 ? (
                 <img src="/minus-icon-disabled.svg" alt="Minus Icon" />
               ) : (
-                <img src="/minus-icon.svg" alt="Minus Icon" onClick={() => handleDecrease(ingredient.id, setIngredientsQuantity)} />
+                <img
+                  src="/minus-icon.svg"
+                  alt="Minus Icon"
+                  onClick={() => handleDecrease(ingredient.id, setIngredientsQuantity)}
+                />
               )}
-              <span>{ingredientsQuantity.find(item => item.id === ingredient.id)?.amount}</span>
-              <img src="/plus-icon.svg" alt="Plus Icon" onClick={() => handleIncrease(ingredient.id, setIngredientsQuantity)} />
+              <span>{ingredientsQuantity.find((item) => item.id === ingredient.id)?.amount}</span>
+              <img
+                src="/plus-icon.svg"
+                alt="Plus Icon"
+                onClick={() => handleIncrease(ingredient.id, setIngredientsQuantity)}
+              />
             </IngredientAmount>
           </IngredientItem>
         ))}
@@ -77,11 +90,20 @@ const IngredientsSection = ({ data }: Props) => {
       </NeedCutlery>
       <FooterCard>
         <OrderAmount>
-          <img src="/minus-icon.svg" />
-          <span>2</span>
-          <img src="/plus-icon.svg" />
+          {
+          orderQuantity === 0 ? (
+              <img src="/minus-icon-disabled.svg" alt="Minus Icon" />
+            ) : (
+              <img
+                src="/minus-icon.svg"
+                alt="Minus Icon"
+                onClick={() => setOrderQuantity(orderQuantity - 1)}
+              />)
+          }
+          <span>{orderQuantity}</span>
+          <img src="/plus-icon.svg" onClick={()=> setOrderQuantity(orderQuantity + 1)}/>
         </OrderAmount>
-        <OrderButton>Adicionar</OrderButton>
+        <OrderButton onClick={()=> handleAddproduct()} >Adicionar</OrderButton>
       </FooterCard>
     </ContainerIngredientsSection>
   );

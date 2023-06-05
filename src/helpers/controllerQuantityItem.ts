@@ -1,7 +1,8 @@
 // utils/helpers.ts
 interface Ingredient {
-    id: number;
-    amount: number;
+  id: number;
+  nm_item: string;
+  amount: number;
   }
 
 export const handleDecrease = (id: number, setIngredientsQuantity: React.Dispatch<React.SetStateAction<Ingredient[]>>) => {

@@ -2,7 +2,19 @@ import {ContainerHeader, BackArrow, Logo, HeaderInputs, AddressInput, SearchInpu
 
 import Popover from '../Popover/index'
 
-const Header = () => {
+interface Props {
+    ingredientsQuantity: Ingredient[];
+    openPopover: boolean
+  }
+  
+  type Ingredient = {
+    id: number;
+    nm_item: string;
+    amount: number;
+  };
+
+const Header = ({ingredientsQuantity, openPopover}:Props) => {
+    
     return (
       <ContainerHeader>
         <BackArrow src='/back-arrow.svg' />
@@ -24,7 +36,7 @@ const Header = () => {
             <CartInput>
                 <img src="/cart-icon.svg" alt="" />
                 <p>Carrinho</p>
-                <Popover/>
+                <Popover ingredientsQuantity={ingredientsQuantity} openPopover={openPopover}/>
             </CartInput>
         </HeaderInputs>
       </ContainerHeader>
