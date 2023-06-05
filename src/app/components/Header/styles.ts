@@ -110,9 +110,12 @@ export const CartInput = styled.div`
   width: 8.8rem;
   height: 3.2rem;
 
+  position: relative;
+
   p {
     font-size: 1.6rem;
     line-height: 1.7rem;
     color: #ED3237;
   }
 `;
+

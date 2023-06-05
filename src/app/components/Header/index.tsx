@@ -1,5 +1,7 @@
 import {ContainerHeader, BackArrow, Logo, HeaderInputs, AddressInput, SearchInput, LoginInput, CartInput} from './styles'
 
+import Popover from '../Popover/index'
+
 const Header = () => {
     return (
       <ContainerHeader>
@@ -22,6 +24,7 @@ const Header = () => {
             <CartInput>
                 <img src="/cart-icon.svg" alt="" />
                 <p>Carrinho</p>
+                <Popover/>
             </CartInput>
         </HeaderInputs>
       </ContainerHeader>
