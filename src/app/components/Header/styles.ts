@@ -7,7 +7,7 @@ export const ContainerHeader = styled.header`
   display: flex;
   justify-content: space-between;
   padding: 1.6rem 4rem;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+  box-shadow: 0rem 0.2rem 0.4rem rgba(0, 0, 0, 0.15);
   position: relative;
 
   @media (max-width: 800px) {
@@ -58,7 +58,7 @@ export const AddressInput = styled.div`
   justify-content: space-between;
   background-color: #fff;
   border-radius: 0.4rem;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0rem 0.1rem 0.2rem rgba(0, 0, 0, 0.1);
   padding: 0.8rem;
 
   div {
@@ -86,7 +86,7 @@ export const SearchInput = styled.input`
   padding: 0 1.6rem;
   background-color: #FFF;
   border-radius: 0.4rem;
-  border: #ED3237 1px solid;
+  border: #ED3237 0.1rem solid;
 `;
 
 export const LoginInput = styled.div`
