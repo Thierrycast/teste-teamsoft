@@ -1,8 +1,9 @@
-import {ContainerHeader, Logo, HeaderInputs, AddressInput, SearchInput, LoginInput, CartInput} from './styles'
+import {ContainerHeader, BackArrow, Logo, HeaderInputs, AddressInput, SearchInput, LoginInput, CartInput} from './styles'
 
 const Header = () => {
     return (
       <ContainerHeader>
+        <BackArrow src='/back-arrow.svg' />
         <Logo src="/logo.svg" alt="" />
         <HeaderInputs>
             <AddressInput>

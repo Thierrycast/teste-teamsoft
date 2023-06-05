@@ -8,17 +8,47 @@ export const ContainerHeader = styled.header`
   justify-content: space-between;
   padding: 1.6rem 4rem;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+  position: relative;
+
+  @media (max-width: 800px) {
+    justify-content: center;
+    align-items: center;
+
+    height: 5.6rem;
+}
+`;
+
+export const BackArrow = styled.img`
+ display: none;
+ position: absolute;
+
+ top: 1.6rem;
+ left: 1.6rem;
+
+  @media (max-width: 500px) {
+    display: block;
+}
 `;
 
 export const Logo = styled.img`
   width: 22.5rem;
   height: 4.8rem;
+
+  @media (max-width: 500px) {
+    width: 15rem;
+    height: 3.2rem;
+}
 `;
 
 export const HeaderInputs = styled.div`
   display: flex;
   gap: 2.4rem;
   align-items: center;
+
+  @media (max-width: 800px) {
+display: none;
+}
+
 `;
 
 export const AddressInput = styled.div`
